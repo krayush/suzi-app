@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "suzi-app",
+    "name": "Suzi App",
     "slug": "suzi-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "suzi-app",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {

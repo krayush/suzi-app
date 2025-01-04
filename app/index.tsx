@@ -1,62 +1,42 @@
-import { useCallback, useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Text, View } from "react-native";
-import { Button, Headline } from "react-native-paper";
+import { Href, Link } from "expo-router";
+import { FlatList, Text, View } from "react-native";
 
-type Post = {
-  id: number;
+const appLinks: Array<{
+  route: Href;
   title: string;
-};
+}> = [
+  {
+    route: "/fetching-posts",
+    title: "Fetching posts",
+  },
+  {
+    route: "/routing",
+    title: "Routing",
+  },
+  {
+    route: "/layout",
+    title: "Layout",
+  },
+];
 
 export default function Index() {
-  const [isFetching, setIsFetching] = useState(false);
-  const [posts, setPosts] = useState<Post[] | null>(null);
-
-  const fetchPosts = useCallback(() => {
-    setIsFetching(true);
-    try {
-      (async () => {
-        const res = await fetch("https://dummyjson.com/posts");
-        const data = await res.json();
-        setPosts(data.posts);
-      })();
-    } catch {
-    } finally {
-      setTimeout(() => {
-        setIsFetching(false);
-      }, 200);
-    }
-  }, [setIsFetching, setPosts]);
-
-  const clearPosts = useCallback(() => setPosts([]), []);
-
   return (
-    <View
-      style={{
-        flex: 1,
-        padding: 8,
-      }}
-    >
-      <View style={{ flexDirection: "row", gap: 8 }}>
-        <Button onPress={fetchPosts}>Fetch</Button>
-        <Button onPress={clearPosts}>Clear</Button>
-      </View>
-      {isFetching && <ActivityIndicator />}
-      {posts && (
-        <FlatList
-          data={posts}
-          keyExtractor={(item) => String(item.id)}
-          style={{
-            padding: 8,
-          }}
-          renderItem={({ item }) => (
-            <View style={{ minHeight: 30 }}>
-              {/* <Button> */}
-              <Text>{item.title}</Text>
-              {/* </Button> */}
-            </View>
-          )}
-        />
-      )}
+    <View>
+      <FlatList
+        data={appLinks}
+        ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
+        renderItem={({ item }) => (
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 8,
+            }}
+          >
+            <Text>{"\u2022"}</Text>
+            <Link href={item.route}>{item.title}</Link>
+          </View>
+        )}
+      />
     </View>
   );
 }
