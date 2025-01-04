@@ -1,5 +1,5 @@
 import { Href, Link } from "expo-router";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
 const appLinks: Array<{
   route: Href;
@@ -26,12 +26,7 @@ export default function Index() {
         data={appLinks}
         ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
         renderItem={({ item }) => (
-          <View
-            style={{
-              flexDirection: "row",
-              gap: 8,
-            }}
-          >
+          <View style={styles.listItem}>
             <Text>{"\u2022"}</Text>
             <Link href={item.route}>{item.title}</Link>
           </View>
@@ -40,3 +35,7 @@ export default function Index() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  listItem: { flexDirection: "row", gap: 8 },
+});
