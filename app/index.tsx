@@ -17,11 +17,16 @@ const appLinks: Array<{
     route: "/layout",
     title: "Layout",
   },
+  {
+    route: "/sign-in",
+    title: "Sign in",
+  },
 ];
 
 export default function Index() {
   return (
     <View>
+      <Text className="font-pblack">Topics</Text>
       <FlatList
         data={appLinks}
         ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
