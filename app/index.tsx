@@ -24,9 +24,9 @@ export default function Index() {
     <View>
       <FlatList
         data={appLinks}
-        ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
+        ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
         renderItem={({ item }) => (
-          <View style={styles.listItem}>
+          <View className="flex flex-row gap-4">
             <Text>{"\u2022"}</Text>
             <Link href={item.route}>{item.title}</Link>
           </View>
@@ -37,5 +37,7 @@ export default function Index() {
 }
 
 const styles = StyleSheet.create({
-  listItem: { flexDirection: "row", gap: 8 },
+  itemSeparator: {
+    height: 8,
+  },
 });

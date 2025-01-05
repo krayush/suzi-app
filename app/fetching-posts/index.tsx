@@ -1,5 +1,11 @@
 import { useCallback, useState } from "react";
-import { ActivityIndicator, FlatList, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  Platform,
+  Text,
+  View,
+} from "react-native";
 import { Button } from "react-native-paper";
 
 type Post = {

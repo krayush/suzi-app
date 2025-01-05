@@ -1,6 +1,6 @@
 import { Slot } from "expo-router";
 import { View } from "react-native";
-import { Header } from "react-native/Libraries/NewAppScreen";
+import "../assets/styles/global.css";
 
 export default function RootLayout() {
   return (
