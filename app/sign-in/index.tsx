@@ -1,13 +1,5 @@
 import { useCallback, useState } from "react";
-import {
-  TextInput,
-  Button,
-  View,
-  StyleSheet,
-  NativeSyntheticEvent,
-  TextInputChangeEventData,
-  Text,
-} from "react-native";
+import { TextInput, Button, View, StyleSheet, Text } from "react-native";
 
 export default function SignIn() {
   const [username, setUsername] = useState("");

@@ -1,4 +1,4 @@
-import { Slot, SplashScreen } from "expo-router";
+import { Slot, SplashScreen, Stack } from "expo-router";
 import { View } from "react-native";
 import "../assets/styles/global.css";
 import { useFonts } from "expo-font";
@@ -32,13 +32,8 @@ export default function RootLayout() {
   }
 
   return (
-    <View
-      style={{
-        flex: 1,
-        padding: 8,
-      }}
-    >
-      <Slot />
-    </View>
+    <Stack>
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+    </Stack>
   );
 }
